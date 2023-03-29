@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/ur_path_planning/ur_path_planning.egg-info/PKG-INFO
+../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt
+../../build/ur_path_planning/ur_path_planning.egg-info/dependency_links.txt
+../../build/ur_path_planning/ur_path_planning.egg-info/entry_points.txt
+../../build/ur_path_planning/ur_path_planning.egg-info/requires.txt
+../../build/ur_path_planning/ur_path_planning.egg-info/top_level.txt
+../../build/ur_path_planning/ur_path_planning.egg-info/zip-safe
+resource/ur_path_planning
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
+ur_path_planning/__init__.py
+ur_path_planning/horizontal_raster.py

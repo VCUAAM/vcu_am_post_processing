@@ -1,0 +1,4 @@
+[console_scripts]
+pointcloud_capture = am_vision.pointcloud_capture:main
+tf_reader = am_vision.tf_reader:main
+

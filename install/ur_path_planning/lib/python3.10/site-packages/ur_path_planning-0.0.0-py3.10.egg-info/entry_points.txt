@@ -1,0 +1,3 @@
+[console_scripts]
+horizontal_raster = ur_path_planning.horizontal_raster:main
+

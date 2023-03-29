@@ -1,0 +1,293 @@
+[0.210s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.210s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f1ae5813ac0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f1ae63aff10>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f1ae63aff10>>)
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.226s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.226s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/rosnuc/workspace/vcu_am_post_processing'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['ignore', 'ignore_ament_install']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'ignore'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'ignore_ament_install'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['colcon_pkg']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'colcon_pkg'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['colcon_meta']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'colcon_meta'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['ros']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'ros'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['cmake', 'python']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'cmake'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'python'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extensions ['python_setup_py']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver) by extension 'python_setup_py'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['ignore', 'ignore_ament_install']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'ignore'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'ignore_ament_install'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['colcon_pkg']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'colcon_pkg'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['colcon_meta']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'colcon_meta'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['ros']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'ros'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['cmake', 'python']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'cmake'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'python'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extensions ['python_setup_py']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src) by extension 'python_setup_py'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extensions ['ignore', 'ignore_ament_install']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extension 'ignore'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extension 'ignore_ament_install'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extensions ['colcon_pkg']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extension 'colcon_pkg'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extensions ['colcon_meta']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extension 'colcon_meta'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extensions ['ros']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(OLD_vcu_ur_driver/src/vcu_ur_driver_launch) by extension 'ros'
+[0.244s] DEBUG:colcon.colcon_core.package_identification:Package 'OLD_vcu_ur_driver/src/vcu_ur_driver_launch' with type 'ros.ament_python' and name 'vcu_ur_driver_launch'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extension 'ignore_ament_install'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extensions ['colcon_pkg']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extension 'colcon_pkg'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extensions ['colcon_meta']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extension 'colcon_meta'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extensions ['ros']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(am_vision) by extension 'ros'
+[0.245s] DEBUG:colcon.colcon_core.package_identification:Package 'am_vision' with type 'ros.ament_python' and name 'am_vision'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extension 'ignore_ament_install'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extensions ['colcon_pkg']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extension 'colcon_pkg'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extensions ['colcon_meta']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extension 'colcon_meta'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extensions ['ros']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(ur_path_planning) by extension 'ros'
+[0.246s] DEBUG:colcon.colcon_core.package_identification:Package 'ur_path_planning' with type 'ros.ament_python' and name 'ur_path_planning'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extension 'ignore_ament_install'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extensions ['colcon_pkg']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extension 'colcon_pkg'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extensions ['colcon_meta']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extension 'colcon_meta'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extensions ['ros']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(vcu_ur_driver) by extension 'ros'
+[0.247s] DEBUG:colcon.colcon_core.package_identification:Package 'vcu_ur_driver' with type 'ros.ament_python' and name 'vcu_ur_driver'
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.265s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.265s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.267s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/rosnuc/workspace/vcu_am_post_processing/am_vision/install
+[0.268s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 21 installed packages in /home/rosnuc/workspace/ros_ur_driver/install
+[0.269s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/rosnuc/workspace/camera/install
+[0.270s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 323 installed packages in /opt/ros/rolling
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_args' from command line to 'None'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_target' from command line to 'None'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_clean_cache' from command line to 'False'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_clean_first' from command line to 'False'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'cmake_force_configure' from command line to 'False'
+[0.317s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'ament_cmake_args' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'catkin_cmake_args' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'am_vision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.318s] DEBUG:colcon.colcon_core.verb:Building package 'am_vision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rosnuc/workspace/vcu_am_post_processing/build/am_vision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision', 'merge_install': False, 'path': '/home/rosnuc/workspace/vcu_am_post_processing/am_vision', 'symlink_install': False, 'test_result_base': None}
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_args' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_target' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_clean_cache' from command line to 'False'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_clean_first' from command line to 'False'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'cmake_force_configure' from command line to 'False'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'ament_cmake_args' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'catkin_cmake_args' from command line to 'None'
+[0.318s] Level 5:colcon.colcon_core.verb:set package 'ur_path_planning' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.318s] DEBUG:colcon.colcon_core.verb:Building package 'ur_path_planning' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning', 'merge_install': False, 'path': '/home/rosnuc/workspace/vcu_am_post_processing/ur_path_planning', 'symlink_install': False, 'test_result_base': None}
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_target' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_clean_first' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'cmake_force_configure' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'ament_cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.319s] DEBUG:colcon.colcon_core.verb:Building package 'vcu_ur_driver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver', 'merge_install': False, 'path': '/home/rosnuc/workspace/vcu_am_post_processing/vcu_ur_driver', 'symlink_install': False, 'test_result_base': None}
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_args' from command line to 'None'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_target' from command line to 'None'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_clean_cache' from command line to 'False'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_clean_first' from command line to 'False'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'cmake_force_configure' from command line to 'False'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'ament_cmake_args' from command line to 'None'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'catkin_cmake_args' from command line to 'None'
+[0.320s] Level 5:colcon.colcon_core.verb:set package 'vcu_ur_driver_launch' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.320s] DEBUG:colcon.colcon_core.verb:Building package 'vcu_ur_driver_launch' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver_launch', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch', 'merge_install': False, 'path': '/home/rosnuc/workspace/vcu_am_post_processing/OLD_vcu_ur_driver/src/vcu_ur_driver_launch', 'symlink_install': False, 'test_result_base': None}
+[0.320s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.323s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.324s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rosnuc/workspace/vcu_am_post_processing/am_vision' with build type 'ament_python'
+[0.324s] Level 1:colcon.colcon_core.shell:create_environment_hook('am_vision', 'ament_prefix_path')
+[0.327s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.327s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/ament_prefix_path.ps1'
+[0.327s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/ament_prefix_path.dsv'
+[0.328s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/ament_prefix_path.sh'
+[0.329s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.329s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.334s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rosnuc/workspace/vcu_am_post_processing/ur_path_planning' with build type 'ament_python'
+[0.334s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur_path_planning', 'ament_prefix_path')
+[0.335s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/ament_prefix_path.ps1'
+[0.335s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/ament_prefix_path.dsv'
+[0.336s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/ament_prefix_path.sh'
+[0.337s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.337s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.341s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rosnuc/workspace/vcu_am_post_processing/vcu_ur_driver' with build type 'ament_python'
+[0.341s] Level 1:colcon.colcon_core.shell:create_environment_hook('vcu_ur_driver', 'ament_prefix_path')
+[0.342s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/ament_prefix_path.ps1'
+[0.343s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/ament_prefix_path.dsv'
+[0.343s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/ament_prefix_path.sh'
+[0.344s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.344s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.349s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rosnuc/workspace/vcu_am_post_processing/OLD_vcu_ur_driver/src/vcu_ur_driver_launch' with build type 'ament_python'
+[0.349s] Level 1:colcon.colcon_core.shell:create_environment_hook('vcu_ur_driver_launch', 'ament_prefix_path')
+[0.349s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/ament_prefix_path.ps1'
+[0.350s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/ament_prefix_path.dsv'
+[0.350s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/ament_prefix_path.sh'
+[0.351s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.351s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.533s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rosnuc/workspace/vcu_am_post_processing/am_vision'
+[0.534s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.534s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.722s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rosnuc/workspace/vcu_am_post_processing/ur_path_planning'
+[0.723s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.723s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.903s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rosnuc/workspace/vcu_am_post_processing/vcu_ur_driver'
+[0.904s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.904s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.087s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rosnuc/workspace/vcu_am_post_processing/OLD_vcu_ur_driver/src/vcu_ur_driver_launch'
+[1.088s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.088s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.362s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/am_vision': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/am_vision build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/am_vision/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/am_vision --record /home/rosnuc/workspace/vcu_am_post_processing/build/am_vision/install.log --single-version-externally-managed
+[1.367s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/ur_path_planning': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed
+[1.370s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/vcu_ur_driver': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/vcu_ur_driver build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver --record /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver/install.log --single-version-externally-managed
+[1.378s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/OLD_vcu_ur_driver/src/vcu_ur_driver_launch': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/vcu_ur_driver_launch build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver_launch/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch --record /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver_launch/install.log --single-version-externally-managed
+[1.596s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/am_vision' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/am_vision build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/am_vision/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/am_vision --record /home/rosnuc/workspace/vcu_am_post_processing/build/am_vision/install.log --single-version-externally-managed
+[1.599s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision' for CMake module files
+[1.599s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision' for CMake config files
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/lib'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/bin'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/lib/pkgconfig/am_vision.pc'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/lib/python3.10/site-packages'
+[1.600s] Level 1:colcon.colcon_core.shell:create_environment_hook('am_vision', 'pythonpath')
+[1.601s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/pythonpath.ps1'
+[1.602s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/pythonpath.dsv'
+[1.602s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/hook/pythonpath.sh'
+[1.602s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/bin'
+[1.602s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(am_vision)
+[1.603s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/package.ps1'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/package.dsv'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/package.sh'
+[1.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/package.bash'
+[1.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/am_vision/package.zsh'
+[1.606s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rosnuc/workspace/vcu_am_post_processing/install/am_vision/share/colcon-core/packages/am_vision)
+[1.609s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning' for CMake module files
+[1.610s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/ur_path_planning' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed
+[1.610s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning' for CMake config files
+[1.610s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib'
+[1.610s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/bin'
+[1.610s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/pkgconfig/ur_path_planning.pc'
+[1.611s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages'
+[1.611s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur_path_planning', 'pythonpath')
+[1.612s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/pythonpath.ps1'
+[1.612s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/pythonpath.dsv'
+[1.612s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/hook/pythonpath.sh'
+[1.613s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/bin'
+[1.613s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ur_path_planning)
+[1.614s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/package.ps1'
+[1.614s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/package.dsv'
+[1.614s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/package.sh'
+[1.615s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/package.bash'
+[1.615s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning/package.zsh'
+[1.615s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/colcon-core/packages/ur_path_planning)
+[1.616s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver' for CMake module files
+[1.617s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver' for CMake config files
+[1.617s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/vcu_ur_driver' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/vcu_ur_driver build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver --record /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver/install.log --single-version-externally-managed
+[1.617s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/lib'
+[1.618s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/bin'
+[1.618s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/lib/pkgconfig/vcu_ur_driver.pc'
+[1.618s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/lib/python3.10/site-packages'
+[1.618s] Level 1:colcon.colcon_core.shell:create_environment_hook('vcu_ur_driver', 'pythonpath')
+[1.619s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/pythonpath.ps1'
+[1.619s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/pythonpath.dsv'
+[1.619s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/hook/pythonpath.sh'
+[1.619s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/bin'
+[1.619s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vcu_ur_driver)
+[1.620s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/package.ps1'
+[1.621s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/package.dsv'
+[1.621s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/package.sh'
+[1.621s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/package.bash'
+[1.621s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/vcu_ur_driver/package.zsh'
+[1.621s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver/share/colcon-core/packages/vcu_ur_driver)
+[1.623s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch' for CMake module files
+[1.624s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/OLD_vcu_ur_driver/src/vcu_ur_driver_launch' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/vcu_ur_driver_launch build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver_launch/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch --record /home/rosnuc/workspace/vcu_am_post_processing/build/vcu_ur_driver_launch/install.log --single-version-externally-managed
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch' for CMake config files
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/lib'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/bin'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/lib/pkgconfig/vcu_ur_driver_launch.pc'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/lib/python3.10/site-packages'
+[1.624s] Level 1:colcon.colcon_core.shell:create_environment_hook('vcu_ur_driver_launch', 'pythonpath')
+[1.625s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/pythonpath.ps1'
+[1.626s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/pythonpath.dsv'
+[1.626s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/hook/pythonpath.sh'
+[1.626s] Level 1:colcon.colcon_core.environment:checking '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/bin'
+[1.626s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vcu_ur_driver_launch)
+[1.627s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/package.ps1'
+[1.627s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/package.dsv'
+[1.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/package.sh'
+[1.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/package.bash'
+[1.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/vcu_ur_driver_launch/package.zsh'
+[1.628s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rosnuc/workspace/vcu_am_post_processing/install/vcu_ur_driver_launch/share/colcon-core/packages/vcu_ur_driver_launch)
+[1.628s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.629s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.629s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.629s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.634s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.634s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.634s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.639s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.640s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rosnuc/workspace/vcu_am_post_processing/install/local_setup.ps1'
+[1.641s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rosnuc/workspace/vcu_am_post_processing/install/_local_setup_util_ps1.py'
+[1.642s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rosnuc/workspace/vcu_am_post_processing/install/setup.ps1'
+[1.644s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rosnuc/workspace/vcu_am_post_processing/install/local_setup.sh'
+[1.644s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rosnuc/workspace/vcu_am_post_processing/install/_local_setup_util_sh.py'
+[1.644s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rosnuc/workspace/vcu_am_post_processing/install/setup.sh'
+[1.646s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rosnuc/workspace/vcu_am_post_processing/install/local_setup.bash'
+[1.646s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rosnuc/workspace/vcu_am_post_processing/install/setup.bash'
+[1.647s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rosnuc/workspace/vcu_am_post_processing/install/local_setup.zsh'
+[1.648s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rosnuc/workspace/vcu_am_post_processing/install/setup.zsh'

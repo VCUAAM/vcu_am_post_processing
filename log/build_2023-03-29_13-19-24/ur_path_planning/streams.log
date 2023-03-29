@@ -1,0 +1,23 @@
+[0.837s] Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/src/ur_path_planning': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed
+[1.006s] running egg_info
+[1.007s] writing ../../build/ur_path_planning/ur_path_planning.egg-info/PKG-INFO
+[1.007s] writing dependency_links to ../../build/ur_path_planning/ur_path_planning.egg-info/dependency_links.txt
+[1.007s] writing entry points to ../../build/ur_path_planning/ur_path_planning.egg-info/entry_points.txt
+[1.007s] writing requirements to ../../build/ur_path_planning/ur_path_planning.egg-info/requires.txt
+[1.007s] writing top-level names to ../../build/ur_path_planning/ur_path_planning.egg-info/top_level.txt
+[1.009s] reading manifest file '../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt'
+[1.009s] writing manifest file '../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt'
+[1.009s] running build
+[1.009s] running build_py
+[1.010s] running install
+[1.010s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.010s]   warnings.warn(
+[1.010s] running install_lib
+[1.011s] running install_data
+[1.011s] running install_egg_info
+[1.012s] removing '/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning-0.0.0-py3.10.egg-info' (and everything under it)
+[1.012s] Copying ../../build/ur_path_planning/ur_path_planning.egg-info to /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning-0.0.0-py3.10.egg-info
+[1.013s] running install_scripts
+[1.029s] Installing horizontal_raster script to /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/ur_path_planning
+[1.029s] writing list of installed files to '/home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log'
+[1.067s] Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/src/ur_path_planning' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed

@@ -1,0 +1,6 @@
+source;share/vcu_ur_driver_launch/hook/pythonpath.ps1
+source;share/vcu_ur_driver_launch/hook/pythonpath.dsv
+source;share/vcu_ur_driver_launch/hook/pythonpath.sh
+source;share/vcu_ur_driver_launch/hook/ament_prefix_path.ps1
+source;share/vcu_ur_driver_launch/hook/ament_prefix_path.dsv
+source;share/vcu_ur_driver_launch/hook/ament_prefix_path.sh
