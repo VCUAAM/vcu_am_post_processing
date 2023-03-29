@@ -16,7 +16,7 @@ class FrameListener(Node):
 
         # Declare and acquire `target_frame` parameter
         self.target_frame = self.declare_parameter(
-          'target_frame', 'base').get_parameter_value().string_value
+          'target_frame', 'world').get_parameter_value().string_value
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
@@ -30,8 +30,8 @@ class FrameListener(Node):
     def on_timer(self):
         # Store frame names in variables that will be used to
         # compute transformations
-        from_frame_rel = 'base'
-        to_frame_rel = self.target_frame
+        from_frame_rel = self.target_frame
+        to_frame_rel = 'world'
 
         try:
             t = self.tf_buffer.lookup_transform(
