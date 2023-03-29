@@ -1,6 +1,0 @@
-source;share/am_vision/hook/pythonpath.ps1
-source;share/am_vision/hook/pythonpath.dsv
-source;share/am_vision/hook/pythonpath.sh
-source;share/am_vision/hook/ament_prefix_path.ps1
-source;share/am_vision/hook/ament_prefix_path.dsv
-source;share/am_vision/hook/ament_prefix_path.sh

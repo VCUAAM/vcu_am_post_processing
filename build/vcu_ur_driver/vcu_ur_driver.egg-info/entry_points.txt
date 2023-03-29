@@ -1,3 +1,0 @@
-[console_scripts]
-ur_driver = vcu_ur_driver.ur_driver:main
-
