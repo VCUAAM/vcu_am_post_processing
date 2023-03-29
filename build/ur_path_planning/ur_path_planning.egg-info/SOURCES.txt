@@ -13,4 +13,7 @@ test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
 ur_path_planning/__init__.py
+ur_path_planning/boundary_coordinates.py
+ur_path_planning/diagonal_raster_positions.py
 ur_path_planning/horizontal_raster.py
+ur_path_planning/horz_and_vert_raster_positions.py

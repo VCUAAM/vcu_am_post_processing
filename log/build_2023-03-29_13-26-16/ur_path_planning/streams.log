@@ -1,0 +1,48 @@
+[0.750s] Invoking command in '/home/rosnuc/workspace/vcu_am_post_processing/src/ur_path_planning': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed
+[0.914s] running egg_info
+[0.914s] creating ../../build/ur_path_planning/ur_path_planning.egg-info
+[0.915s] writing ../../build/ur_path_planning/ur_path_planning.egg-info/PKG-INFO
+[0.915s] writing dependency_links to ../../build/ur_path_planning/ur_path_planning.egg-info/dependency_links.txt
+[0.915s] writing entry points to ../../build/ur_path_planning/ur_path_planning.egg-info/entry_points.txt
+[0.915s] writing requirements to ../../build/ur_path_planning/ur_path_planning.egg-info/requires.txt
+[0.915s] writing top-level names to ../../build/ur_path_planning/ur_path_planning.egg-info/top_level.txt
+[0.915s] writing manifest file '../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt'
+[0.916s] reading manifest file '../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt'
+[0.916s] writing manifest file '../../build/ur_path_planning/ur_path_planning.egg-info/SOURCES.txt'
+[0.917s] running build
+[0.917s] running build_py
+[0.917s] creating /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build
+[0.917s] creating /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib
+[0.917s] creating /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] copying ur_path_planning/boundary_coordinates.py -> /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] copying ur_path_planning/diagonal_raster_positions.py -> /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] copying ur_path_planning/horizontal_raster.py -> /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] copying ur_path_planning/__init__.py -> /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] copying ur_path_planning/horz_and_vert_raster_positions.py -> /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning
+[0.917s] running install
+[0.918s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.918s]   warnings.warn(
+[0.918s] running install_lib
+[0.919s] creating /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.919s] copying /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning/boundary_coordinates.py -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.919s] copying /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning/diagonal_raster_positions.py -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.919s] copying /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning/horizontal_raster.py -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.919s] copying /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning/__init__.py -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.920s] copying /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build/lib/ur_path_planning/horz_and_vert_raster_positions.py -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning
+[0.920s] byte-compiling /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning/boundary_coordinates.py to boundary_coordinates.cpython-310.pyc
+[0.920s] byte-compiling /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning/diagonal_raster_positions.py to diagonal_raster_positions.cpython-310.pyc
+[0.921s] byte-compiling /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning/horizontal_raster.py to horizontal_raster.cpython-310.pyc
+[0.921s] byte-compiling /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning/__init__.py to __init__.cpython-310.pyc
+[0.922s] byte-compiling /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning/horz_and_vert_raster_positions.py to horz_and_vert_raster_positions.cpython-310.pyc
+[0.922s] running install_data
+[0.922s] creating /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ament_index
+[0.923s] creating /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ament_index/resource_index
+[0.923s] creating /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ament_index/resource_index/packages
+[0.923s] copying resource/ur_path_planning -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ament_index/resource_index/packages
+[0.923s] copying package.xml -> /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/share/ur_path_planning
+[0.923s] running install_egg_info
+[0.924s] Copying ../../build/ur_path_planning/ur_path_planning.egg-info to /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages/ur_path_planning-0.0.0-py3.10.egg-info
+[0.924s] running install_scripts
+[0.939s] Installing horizontal_raster script to /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/ur_path_planning
+[0.940s] writing list of installed files to '/home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log'
+[0.974s] Invoked command in '/home/rosnuc/workspace/vcu_am_post_processing/src/ur_path_planning' returned '0': PYTHONPATH=/home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ur_path_planning build --build-base /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/build install --prefix /home/rosnuc/workspace/vcu_am_post_processing/install/ur_path_planning --record /home/rosnuc/workspace/vcu_am_post_processing/build/ur_path_planning/install.log --single-version-externally-managed
