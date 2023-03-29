@@ -1,6 +1,7 @@
 from math import *
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 
 def create_offset(x1,y1,x2,y2,hose_OD):
     x_lo = x1 + hose_OD/2
@@ -247,10 +248,12 @@ def final_diagonal_raster_positions(x1,y1,x2,y2,hose_OD):
 
 def main(x1,y1,x2,y2,hose_OD):
     pos = final_diagonal_raster_positions(x1,y1,x2,y2,hose_OD)
-    print(pos)
+    #print(pos)
     pos = np.asarray(pos)
-    plt.figure(1)
+    fig,ax = plt.subplots()
     plt.plot(pos[:,0],pos[:,1])
+    rect = Rectangle((x1,y1),x2 - x1,y2 - y1,linewidth=1, edgecolor='black', facecolor='none')
+    ax.add_patch(rect)
     plt.show()
 
 if __name__ == "__main__":
