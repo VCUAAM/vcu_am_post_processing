@@ -1,0 +1,6 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+warning: install_data: setup script did not provide a directory for 'launch/vcu-ur5e.launch.py' -- installing right in '/home/rosnuc/workspace/vcu_ur_driver/src/vcu_ur_driver_launch/install/vcu_ur_driver_launch'
+
+warning: install_data: setup script did not provide a directory for 'etc/vcu_ur5e_calibration.yaml' -- installing right in '/home/rosnuc/workspace/vcu_ur_driver/src/vcu_ur_driver_launch/install/vcu_ur_driver_launch'
+
