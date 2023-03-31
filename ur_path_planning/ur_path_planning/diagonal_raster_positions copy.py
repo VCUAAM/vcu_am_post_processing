@@ -27,43 +27,59 @@ def intersections(lims,func,last):
             [1,0,y_lo],
             [1,0,y_hi]]
     for sol in sols:
-        lin = [sol,func]
-        
+        if last == sol[2] or last == sol[2]:
+            continue
+        lin = np.asarray([sol,func])
+        inter = np.linalg.solve(lin[:,[0,1]],lin[:,2])
+        print(inter)
+        if (inter[0] >= x_lo and inter[0] <= x_hi) and (inter[1] >= y_lo and inter[1] <= y_hi):
+            return inter
+    
+    print("you done fucked up a-a-ron")
+    quit()
 
-def position_generator(positions,lims,hx,hy):
+def position_generator(lims,hx,hy):
     x_lo,x_hi,y_lo,y_hi = lims[0],lims[1],lims[2],lims[3]
     m = (y_hi - y_lo)/(x_hi - x_lo)
-    x0,y0 = x_lo,y_lo
+    positions = [[x_lo,y_lo]]
+    xi,yi = x_lo,y_lo
     i = 0
     sx,sy = False,False
-    positions.append([x_lo,y_lo])
     
     while True:
         match i%4:
             case 0:
+                if yi == y_hi and not sy:
+                    sy = True
                 xi = positions[-1][0] + sy*hx
                 yi = positions[-1][0] + (not sy)*hy
             case 1:
                 func = [m,1,-m*xi + yi]
-                xi = intersection(lims,func,[xi,yi])
-                yi = y0
+                inter = intersections(lims,func,xi)
+                xi = inter[0]
+                yi = inter[1]
             case 2:
                 if xi == x_hi and not sx:
-                    x0,sx = x_hi, True
+                    sx = True
                 xi = positions[-1][0] + (not sx)*hx
                 yi = positions[-1][0] + sx*hy
             case 3:
-                xi = x0
-                yi = intersection(f(y),set(funcs))
+                func = [m,1,-m*xi + yi]
+                inter = intersections(lims,func,yi)
+                xi = inter[0]
+                yi = inter[1]
         positions.append([xi,yi])
+        print(positions)
         if positions[-1] == [x_hi,y_hi] or i == 100:
             break
         i += 1
     
     return positions
 
-def main(x1,y1,x2,y2,hose_OD):
-    pos = final_diagonal_raster_positions(x1,y1,x2,y2,hose_OD)
+def main(x1,y1,x2,y2,hose_OD,overlap):
+    lims = create_offset(x1,y1,x2,y2,hose_OD)
+    hx,hy = step_size(lims,overlap,hose_OD)
+    pos = position_generator(lims,hx,hy)
     #print(pos)
     pos = np.asarray(pos)
     fig,ax = plt.subplots()
@@ -73,4 +89,4 @@ def main(x1,y1,x2,y2,hose_OD):
     plt.show()
 
 if __name__ == "__main__":
-    main(0,0,23.36,15,2)    
+    main(0,0,23.36,15,2,.75)    
