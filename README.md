@@ -14,3 +14,7 @@ ros2 launch ur_robot_driver test_scaled_joint_trajectory_controller.launch.py
 
 Read position of tool0 to base link
 ros2 run tf2_ros tf2_echo tool0 base
+
+ros2 launch am_vision ur5e_tf_reader.launch.py
+
+ros2 action send_goal pointcloudcapture am_pp_interfaces/action/PointcloudCapture "{execute: True}"

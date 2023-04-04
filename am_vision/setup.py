@@ -24,7 +24,9 @@ setup(
     entry_points={
         'console_scripts': [
             'pointcloud_capture = am_vision.pointcloud_capture:main',
-            'tf_reader = am_vision.tf_reader:main'
+            'tf_reader = am_vision.tf_reader:main',
+            'transform_server = am_vision.transform_server:main',
+            'pointcloud_node = am_vision.pointcloud_node:main'
         ],
     },
 )
