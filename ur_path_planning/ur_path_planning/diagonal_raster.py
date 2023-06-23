@@ -104,6 +104,7 @@ def main(x1,y1,x2,y2,hose_OD,overlap):
     plt.plot(pos[:,0],pos[:,1],)
     rect = Rectangle((x1,y1),x2 - x1,y2 - y1,linewidth=1, edgecolor='black', facecolor='none')
     ax.add_patch(rect)
+    ax.axis('off')
     plt.show()
 
 '''
