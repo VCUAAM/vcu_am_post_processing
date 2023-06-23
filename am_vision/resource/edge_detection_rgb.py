@@ -1,10 +1,7 @@
-import sys
-
 import cv2
 import open3d as o3d
 
-sys.path.append("C:/Users/schorrl/Documents/GitHub/DCAM560/DCAM560-API/DCAM560")
-from src.API.Vzense_api_560 import *
+from dcam560.Vzense_api_560 import *
 
 camera = VzenseTofCam()
 
