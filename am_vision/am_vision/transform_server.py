@@ -59,23 +59,19 @@ class PointcloudCaptureServer(Node):
 
     def capture_image(self):
         self.camera.init()
-        self.camera.set_data_mode(DataMode.Depth_RGB)
-        self.camera.set_mapper(Sensor.RGB,True)
+        self.camera.set_data_mode(DataMode.Depth_IR_RGB)
         self.camera.set_depth_range(Range.Mid)
         self.camera.set_depth_distortion_correction(True)
-        self.camera.set_depth_frame(Range.Mid)
         self.camera.set_compute_depth_correction(True)
-        self.camera.set_threshold(80)
 
         while True:
             frameready = self.camera.read_frame()
-            if frameready and frameready.mappedRGB:      
-                frame = self.camera.get_frame(Frame.MappedRGB)
-                mappedrgb = self.camera.gen_image(frame,Frame.RGB)
+            if frameready and frameready.ir:      
+                frame = self.camera.get_frame(Frame.IR)
+                ir = self.camera.gen_image(frame,Frame.IR)
                 break
-        self.camera.set_threshold()
-        img_gray = cv2.cvtColor(mappedrgb,cv2.COLOR_BGR2GRAY)
-        ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
+        
+        ret,thresh = cv2.threshold(ir,45,255,cv2.THRESH_BINARY)
         mask_cont = np.zeros(thresh.shape[:2], dtype="uint8") * 255
         contours,hierarchy = cv2.findContours(thresh,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
         max_cont = max(contours, key=cv2.contourArea)
@@ -129,10 +125,9 @@ class PointcloudCaptureServer(Node):
         cloud = o3d.geometry.PointCloud()
         cloud.points = o3d.utility.Vector3dVector(np.asarray(points))
         origin = o3d.geometry.TriangleMesh.create_coordinate_frame(size=100, origin=[0,0,0])
-        voxel_down_pcd = cloud.voxel_down_sample(voxel_size=0.01)
 
-        cl, ind = voxel_down_pcd.remove_radius_outlier(nb_points=5, radius=7)
-        filteredr = voxel_down_pcd.select_by_index(ind)
+        cl, ind = cloud.remove_radius_outlier(nb_points=5, radius=7)
+        filteredr = cloud.select_by_index(ind)
         cl, ind = filteredr.remove_statistical_outlier(nb_neighbors=45,std_ratio=3)
         filtereds = filteredr.select_by_index(ind)
 
@@ -142,20 +137,15 @@ class PointcloudCaptureServer(Node):
 
         cloud = o3d.geometry.PointCloud()
         cloud.points = o3d.utility.Vector3dVector(pcd_mean)
-        origin = o3d.geometry.TriangleMesh.create_coordinate_frame(size=100, origin=[0,0,0])
-
-
         plane_model, inliers = cloud.segment_plane(distance_threshold=0.2,
                                                 ransac_n=3,
                                                 num_iterations=10000)
 
         inlier_cloud = cloud.select_by_index(inliers)
         inlier_cloud.paint_uniform_color([1.0, 0, 0])
-        outlier_cloud = cloud.select_by_index(inliers, invert=True)
         obb = inlier_cloud.get_minimal_oriented_bounding_box(robust=True)
         obb.color = (0, 0, 1)
-        table_coords = np.asarray(obb.get_box_points())
-        table_coords = (table_coords.flatten()).tolist()
+        table_coords = np.asarray(obb.get_box_points()).tolist()
 
         return table_coords
 

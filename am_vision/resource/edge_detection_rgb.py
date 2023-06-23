@@ -89,12 +89,7 @@ if frameready and frameready.depth:
     print(set(frame_msked.flatten()))
     cv2.imwrite("save/maskdep.png",frame_msked)
     pointlist = camera.convert_to_world_vector(frame_d)
-    folder = os.getcwd() + "/save"
-    filename = folder + "/point.txt"
-
-    if not os.path.exists(folder):
-        print("Creating folder")
-        os.makedirs(folder)
+    filename = "am_vision\save\point.txt"
 
     file = open(filename,"w")
 
