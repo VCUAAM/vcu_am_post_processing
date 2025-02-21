@@ -1,0 +1,69 @@
+import pyrealsense2 as rs
+import numpy as np
+import cv2
+
+# Initialize RealSense pipeline
+pipeline = rs.pipeline()
+config = rs.config()
+config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+pipeline.start(config)
+
+# Align depth to color
+align_to = rs.stream.color
+align = rs.align(align_to)
+
+try:
+    while True:
+        # Capture frames
+        frames = pipeline.wait_for_frames()
+        aligned_frames = align.process(frames)
+        depth_frame = aligned_frames.get_depth_frame()
+        color_frame = aligned_frames.get_color_frame()
+
+        if not depth_frame or not color_frame:
+            continue
+
+        # Convert frames to numpy arrays
+        depth_image = np.asanyarray(depth_frame.get_data())
+        color_image = np.asanyarray(color_frame.get_data())
+
+        # Normalize depth image for mask creation
+        depth_normalized = cv2.normalize(depth_image, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+        
+        # Apply GaussianBlur to smooth depth variations
+        depth_blurred = cv2.GaussianBlur(depth_normalized, (5, 5), 0)
+
+        # Create foreground (object) and background masks
+        near_mask = cv2.inRange(depth_blurred, 120, 200)  # Foreground mask (objects on desk)
+        far_mask = cv2.inRange(depth_blurred, 0, 119)  # Background mask
+
+        # Initialize GrabCut mask
+        mask = np.full_like(near_mask, cv2.GC_BGD, dtype=np.uint8)  # Default: background
+        mask[far_mask == 255] = cv2.GC_PR_BGD  # Probably background
+        mask[near_mask == 255] = cv2.GC_FGD  # Foreground (objects)
+
+        # Morphological operations to refine masks
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+        near_mask = cv2.morphologyEx(near_mask, cv2.MORPH_CLOSE, kernel, iterations=2)
+
+        # Apply GrabCut
+        bg_model = np.zeros((1, 65), np.float64)
+        fg_model = np.zeros((1, 65), np.float64)
+        cv2.grabCut(color_image, mask, None, bg_model, fg_model, 5, cv2.GC_INIT_WITH_MASK)
+
+        # Extract foreground
+        segmented = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype('uint8')
+        foreground = cv2.bitwise_and(color_image, color_image, mask=segmented)
+
+        # Display original and segmented frames
+        cv2.imshow('Original Color Frame', color_image)
+        cv2.imshow('Segmented Foreground', foreground)
+
+        # Exit loop on 'q' key
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+finally:
+    pipeline.stop()
+    cv2.destroyAllWindows()
