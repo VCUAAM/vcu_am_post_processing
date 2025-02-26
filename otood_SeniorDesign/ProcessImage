@@ -1,0 +1,54 @@
+import cv2
+import numpy as np
+import os
+
+# Define input and output folders
+INPUT_FOLDER = "input_images"
+OUTPUT_FOLDER = "output_images"
+
+# Maaking sure that the output folder exists
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+def process_image(filename):
+    """Reads an image, converts non-black pixels to white, and saves the result."""
+    
+    # Construct the full input path
+    input_path = os.path.join(INPUT_FOLDER, filename)
+    
+    # Load the image
+    image = cv2.imread(input_path, cv2.IMREAD_COLOR)
+
+    if image is None:
+        print(f"Error: Could not load {filename}")
+        return
+
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Create a mask where black pixels remain (pure black = 0, 0, 0)
+    black_mask = (image[:, :, 0] == 0) & (image[:, :, 1] == 0) & (image[:, :, 2] == 0)
+
+    # Create an output image (default is white background)
+    processed_image = np.ones_like(image) * 255  # Start with a fully white image
+
+    # Preserve black pixels
+    processed_image[black_mask] = [0, 0, 0]  # Set pure black pixels
+
+    # Construct output path
+    output_path = os.path.join(OUTPUT_FOLDER, filename)
+
+    # Save the processed image
+    cv2.imwrite(output_path, processed_image)
+
+    print(f"Processed: {filename} → Saved to {output_path}")
+
+# Get all PNG files in the input folder
+image_files = [f for f in os.listdir(INPUT_FOLDER) if f.lower().endswith('.png')]
+
+if not image_files:
+    print("No PNG files found in input_images folder.")
+else:
+    for img_file in image_files:
+        process_image(img_file)
+
+print("Processing complete!")
