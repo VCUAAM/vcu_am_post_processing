@@ -20,8 +20,3 @@ def image_to_matrix(image_path, output_path):
         for row in matrix:
             f.write(' '.join(map(str, row)) + '\n')
 
-
-# Example usage
-input_image = 'images/pentagon.png'
-output_file = 'path_input/pentagon.txt'
-image_to_matrix(input_image, output_file)

@@ -61,6 +61,7 @@ class Robot(object):
         # Append position only if direction changes or path is empty
         if not self.path or (dx, dy) != getattr(self, "last_direction", (None, None)):
             self.path.append((self.current_position['x'], self.current_position['y']))
+            # print(self.current_position)
             self.last_direction = (dx, dy)  # Store last move direction
 
         self.current_position['x'] = next_pos_x

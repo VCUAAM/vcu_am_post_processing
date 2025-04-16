@@ -5,6 +5,7 @@ import time
 import matplotlib.colors as mcolors
 from cleaner_robot.robot import Robot
 from cleaner_robot.sweeper import Sweeper
+from image_to_matrix import image_to_matrix
 
 def read_matrix_from_file(file_path):
     with open(file_path, 'r') as file:
@@ -98,80 +99,90 @@ def find_start_position(grid, robot_size):
     """
     rows, cols = grid.shape
 
-    # Scan bottom-up, left-right for the first available 0 cell
-    for y in range(rows - 1, -1, -1):  # Start from the bottom row
-        for x in range(cols):  # Scan left to right
-            if grid[y, x] == 0:
-                # Ensure the robot has space by shifting up
-                adjusted_y = max(0, y - (robot_size - 1))  # Avoid negative index
-                return {'x': x, 'y': adjusted_y}
+    for y in range(rows - robot_size + 1):  # top to bottom
+        for x in range(cols - robot_size + 1):  # left to right
+            subgrid = grid[y:y + robot_size, x:x + robot_size]
+            if np.all(subgrid == 0):
+                return {'x': x, 'y': y}
 
-    # If no valid start position found
+    # No valid position found
     return None
 
-def run(robot_size, matrix_file):
-    grid = np.array(read_matrix_from_file(matrix_file))  # Load the matrix
-    rows, cols = grid.shape  # Get matrix size dynamically
-    start_position = find_start_position(grid, robot_size)
+def run(robot_size, matrix):
+    rows, cols = matrix.shape  # Get matrix size dynamically
+    start_position = find_start_position(matrix, robot_size)
 
     # Determine cell size dynamically
-    cell_size = calculate_cell_size(rows, cols)
+    # cell_size = calculate_cell_size(rows, cols)
+    # cell_size = min(800 // cols, 600 // rows)
 
     # # Initialize robot
-    robot, sweeper = initialize_robot(grid, start_position, 0, robot_size)
+    robot, sweeper = initialize_robot(matrix, start_position, 0, robot_size)
     sweeper.sweep()
     path_taken = robot.get_path()
-    print("Path of Coordinates:", path_taken)
+    # print("Path of Coordinates:", path_taken)
 
     # robot_visual_size = robot_size * cell_size
 
-    # # Adjust screen size based on grid dimensions
+    # Adjust screen size based on grid dimensions
     # screen = turtle.Screen()
-    # screen.setup(cols * cell_size + 100, rows * cell_size + 100)
+    # # screen.setup(cols * cell_size + 100, rows * cell_size + 100)
+    # screen.setup(width=1000, height=800)
+    # # screen.setworldcoordinates(0, rows * cell_size, cols * cell_size, 0)
     # screen.tracer(0)
     # t = turtle.Turtle()
     # t.speed(0)
     # t.penup()
 
-    # visualize_grid(grid, cell_size, t)
+    # visualize_grid(matrix, cell_size, t)
     # animate_robot_movement(path_taken, cell_size, rows, robot_visual_size, screen, t)
     # turtle.done()
     return path_taken
 
 
-def main(input_folder, output_folder, robot_size):
+def main(robot_size):
     start_time = time.time()
-    os.makedirs(output_folder, exist_ok=True)
     
-    # Get existing output file count
-    existing_files = [f for f in os.listdir(output_folder) if f.startswith("layer_")]
-    existing_files.sort()  # Sort to find the latest layer
-    last_layer = 0
-    
-    if existing_files:
-        last_layer = max(int(f.split('_')[1]) for f in existing_files if f.split('_')[1].isdigit())
-    
-    # Process each file in the input folder
-    for file_name in os.listdir(input_folder):
-        input_path = os.path.join(input_folder, file_name)
-        
-        if os.path.isfile(input_path):
-            
-            processed_content = run(robot_size, input_path)
-            
-            # Convert list output to string
-            processed_str = '\n'.join(map(str, processed_content))
-            
-            # Determine new output file name
-            last_layer += 1
-            output_file_name = f"layer_{last_layer}"
-            output_path = os.path.join(output_folder, output_file_name)
-            
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(processed_str)
-            
-            # Delete input file after processing
-            os.remove(input_path)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    images_dir = os.path.join(base_dir, 'images')
+    path_input = os.path.join(base_dir,  'path_input')
+    path_output = os.path.join(base_dir, 'path_output')
+
+    os.makedirs(path_input, exist_ok=True)
+    os.makedirs(path_output, exist_ok=True)
+
+    # Step 1: Get single image from images folder
+    image_files = [f for f in os.listdir(images_dir) if f.endswith(('.png', '.jpg'))]
+    if len(image_files) != 1:
+        raise ValueError("There must be exactly one image in the 'images' folder.")
+    image_path = os.path.join(images_dir, image_files[0])
+
+    # Step 2: Convert image to matrix and save as new_layer
+    matrix_output_path = os.path.join(path_input, 'new_layer.txt')
+    image_to_matrix(image_path, matrix_output_path)
+
+    # Step 3: Load matrix and run robot/sweeper
+    matrix = np.array(read_matrix_from_file(matrix_output_path))
+    output = run(robot_size, matrix)
+
+    # Convert list output to string
+    output_str = '\n'.join(map(str, output))
+
+    # Step 4: Save output to next layer in path_output
+    existing_layers = [f for f in os.listdir(path_output) if f.startswith('layer_') and f[len('layer_'):].isdigit()]
+    if existing_layers:
+        next_index = max(int(f[len('layer_'):]) for f in existing_layers) + 1
+    else:
+        next_index = 1
+
+    output_path = os.path.join(path_output, f'layer_{next_index}')
+
+    # Write output to file
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(output_str)
+
+    os.remove(matrix_output_path)
+    os.remove(image_path)
     end_time = time.time()  # End the timer
     elapsed_time = end_time - start_time 
     print(elapsed_time)
@@ -179,9 +190,6 @@ def main(input_folder, output_folder, robot_size):
 
 
 if __name__ == "__main__":
-    input_folder = "path_input"
-    output_folder = "path_output"
     robot_size = 10
-
-    main(input_folder, output_folder, robot_size)
+    main(robot_size)
 
