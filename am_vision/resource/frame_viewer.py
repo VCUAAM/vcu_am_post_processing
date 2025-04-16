@@ -1,7 +1,5 @@
 from dcam560.Vzense_api_560 import *
 
-import platform
-
 def main():
 
     #Defining arrays for user display of controls
@@ -17,7 +15,7 @@ def main():
     camera.set_depth_range()
     #camera.set_mapper(Sensor.RGB,True)
     #camera.set_RGB_distortion_correction(True)
-    camera.set_depth_distortion_correction(True)
+    camera.set_depth_distortion_correction(False)
     camera.set_compute_depth_correction(True)
     depth_max, value_min, value_max = camera.get_measuring_range()
 
@@ -62,7 +60,7 @@ def main():
                 iw = True
                 irframe = camera.get_frame(Frame.IR)
                 ir = camera.gen_image(irframe, Frame.IR)
-
+                #irC = cv2.applyColorMap(ir,cv2.COLORMAP_RAINBOW)
                 #Window configuration for images
                 cv2.namedWindow('IR Image', cv2.WINDOW_KEEPRATIO)
                 cv2.imshow("IR Image", ir)
