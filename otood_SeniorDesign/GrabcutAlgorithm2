@@ -1,0 +1,87 @@
+import pyrealsense2 as rs
+import numpy as np
+import cv2
+
+# Configuration parameters (adjust based on powder characteristics)
+DEPTH_NEAR = 150    # mm - optimal for powder bed standoff distance
+DEPTH_FAR = 120     # mm - powder layer thickness compensation
+BLUR_SIZE = (7,7)   # Odd kernel size for noise reduction
+MORPH_ITER = 3      # Morphological operations iterations
+
+# RealSense pipeline configuration
+pipeline = rs.pipeline()
+config = rs.config()
+config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+profile = pipeline.start(config)
+
+# Align depth to color stream
+align_to = rs.stream.color
+align = rs.align(align_to)
+
+# Get depth scale for unit conversion
+depth_sensor = profile.get_device().first_depth_sensor()
+depth_scale = depth_sensor.get_depth_scale()
+
+try:
+    while True:
+        # Frame acquisition
+        frames = pipeline.wait_for_frames()
+        aligned_frames = align.process(frames)
+        depth_frame = aligned_frames.get_depth_frame()
+        color_frame = aligned_frames.get_color_frame()
+
+        if not depth_frame or not color_frame:
+            continue
+
+        # Image conversion
+        color_image = np.asanyarray(color_frame.get_data())
+        depth_image = np.asanyarray(depth_frame.get_data()) * depth_scale * 1000  # Convert to mm
+
+        # Depth-based mask refinement
+        depth_8bit = cv2.normalize(depth_image, None, 0, 255, cv2.NORM_MINMAX, cv2.CV_8U)
+        depth_clean = cv2.bilateralFilter(depth_8bit, 9, 75, 75)
+        
+        # Adaptive thresholding for powder bed detection
+        near_mask = cv2.inRange(depth_clean, DEPTH_FAR, DEPTH_NEAR)
+        far_mask = cv2.inRange(depth_clean, 0, DEPTH_FAR-1)
+
+        # Morphological processing
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+        near_mask = cv2.morphologyEx(near_mask, cv2.MORPH_CLOSE, kernel, iterations=MORPH_ITER)
+        far_mask = cv2.morphologyEx(far_mask, cv2.MORPH_OPEN, kernel, iterations=MORPH_ITER)
+
+        # GrabCut initialization matrix
+        gc_mask = np.full(depth_image.shape[:2], cv2.GC_BGD, dtype=np.uint8)
+        gc_mask[far_mask == 255] = cv2.GC_PR_BGD  # Probable background (powder)
+        gc_mask[near_mask == 255] = cv2.GC_FGD    # Definite foreground (part)
+
+        # GrabCut execution with optimized parameters
+        bgd_model = np.zeros((1,65), np.float64)
+        fgd_model = np.zeros((1,65), np.float64)
+        cv2.grabCut(color_image, gc_mask, None, bgd_model, fgd_model, 
+                   iterCount=3, mode=cv2.GC_INIT_WITH_MASK)
+
+        # Post-processing for laser fusion artifacts
+        final_mask = np.where((gc_mask == cv2.GC_FGD) | (gc_mask == cv2.GC_PR_FGD), 255, 0).astype('uint8')
+        final_mask = cv2.medianBlur(final_mask, 5)
+
+        # White background implementation
+        white_bg = np.full_like(color_image, 255)  # Create white canvas
+        segmented = cv2.bitwise_and(color_image, color_image, mask=final_mask)
+        inverse_mask = cv2.bitwise_not(final_mask)
+        white_bg = cv2.bitwise_and(white_bg, white_bg, mask=inverse_mask)
+        result = cv2.add(segmented, white_bg)
+
+        # Visualization with overlay
+        overlay = cv2.addWeighted(color_image, 0.3, result, 0.7, 0)
+        cv2.imshow('Segmentation Result', result)
+        cv2.imshow('Process Overlay', overlay)
+
+        # Exit on 'q'
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+finally:
+    pipeline.stop()
+    cv2.destroyAllWindows()

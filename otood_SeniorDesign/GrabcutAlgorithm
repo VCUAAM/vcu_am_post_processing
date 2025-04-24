@@ -40,11 +40,11 @@ try:
         far_mask = cv2.inRange(depth_blurred, 0, 119)  # Background
 
         # Combine masks to create GrabCut initialization mask
-        mask = np.full_like(near_mask, cv2.GC_BGD, dtype=np.uint8)  # Default to background
-        mask[far_mask == 255] = cv2.GC_PR_BGD  # Probably background
-        mask[near_mask == 255] = cv2.GC_FGD  # Foreground (items on the desk)
+        mask = np.full_like(near_mask, cv2.GC_BGD, dtype=np.uint8)
+        mask[far_mask == 255] = cv2.GC_PR_BGD
+        mask[near_mask == 255] = cv2.GC_FGD
 
-        # Morphological operations to refine masks
+        # Refine the near mask
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
         near_mask = cv2.morphologyEx(near_mask, cv2.MORPH_CLOSE, kernel, iterations=2)
 
@@ -53,17 +53,22 @@ try:
         fg_model = np.zeros((1, 65), np.float64)
         cv2.grabCut(color_image, mask, None, bg_model, fg_model, 5, cv2.GC_INIT_WITH_MASK)
 
-        # Extract the segmented foreground
+        # Extract segmented foreground mask
         segmented = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype('uint8')
-        foreground = cv2.bitwise_and(color_image, color_image, mask=segmented)
 
-        # Display the results
+        # Create white background image
+        white_background = np.full(color_image.shape, 255, dtype=np.uint8)
+
+        # Apply segmented mask: keep foreground, replace background with white
+        foreground_with_white_bg = np.where(segmented[:, :, None] == 255, color_image, white_background)
+
+        # Display output
         cv2.imshow('Original Color Frame', color_image)
-        cv2.imshow('Segmented Foreground', foreground)
+        cv2.imshow('Foreground on White Background', foreground_with_white_bg)
 
-        # Exit on 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
 finally:
     pipeline.stop()
-    cv2.destroyAllWindows() 
+    cv2.destroyAllWindows()

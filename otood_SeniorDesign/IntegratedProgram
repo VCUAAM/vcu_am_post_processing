@@ -1,0 +1,142 @@
+import pyrealsense2 as rs
+import numpy as np
+import cv2
+from scipy.spatial.transform import Rotation as R
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(valid_verts[:,0], valid_verts[:,1], valid_verts[:,2])
+plt.show()
+
+# --------------------------
+# 1. Camera Setup with Filters
+# --------------------------
+pipeline = rs.pipeline()
+config = rs.config()
+config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+pipeline.start(config)
+
+# Depth processing filters
+decimate = rs.decimation_filter()  # Reduces depth data density
+spatial = rs.spatial_filter()      # Removes spatial noise
+temporal = rs.temporal_filter()    # Reduces temporal noise
+pc = rs.pointcloud()               # For 3D point cloud generation
+
+# --------------------------
+# 2. Calibration Parameters (MOCK VALUES - YOU NEED TO MEASURE THESE)
+# --------------------------
+# Camera position relative to UR5e end effector (meters)
+CAM_TO_EE_TRANSLATION = [0.05, 0, 0.1]  # x, y, z offset
+CAM_TO_EE_ROTATION = R.from_euler('xyz', [0, 0, 0]).as_matrix()
+
+# --------------------------
+# 3. Transformation Function
+# --------------------------
+def camera_to_robot(point_3d, current_robot_pose):
+    """Transform point from camera to robot base coordinates"""
+    # Convert robot pose to transformation matrix
+    ee_pos = np.array(current_robot_pose[:3])
+    ee_rot = R.from_rotvec(current_robot_pose[3:]).as_matrix()
+    
+    # Construct transformation matrices
+    cam_to_ee = np.eye(4)
+    cam_to_ee[:3, :3] = CAM_TO_EE_ROTATION
+    cam_to_ee[:3, 3] = CAM_TO_EE_TRANSLATION
+    
+    ee_to_base = np.eye(4)
+    ee_to_base[:3, :3] = ee_rot
+    ee_to_base[:3, 3] = ee_pos
+    
+    # Apply transformations
+    point_hom = np.append(point_3d, 1)
+    base_point = ee_to_base @ cam_to_ee @ point_hom
+    return base_point[:3]
+
+# --------------------------
+# 4. Main Loop (Integrated)
+# --------------------------
+try:
+    while True:
+        # A. Get current robot pose (MOCK - REPLACE WITH REAL DATA)
+        current_robot_pose = [0.5, 0.2, 0.3, 0, 0, 0]  # x,y,z,rx,ry,rz
+        
+        # B. Capture and process frames
+        frames = pipeline.wait_for_frames()
+        frames = decimate.process(frames)
+        frames = spatial.process(frames)
+        frames = temporal.process(frames)
+        
+        # C. Get aligned color and depth
+        depth_frame = frames.get_depth_frame()
+        color_frame = frames.get_color_frame()
+        if not depth_frame or not color_frame: continue
+        
+        # D. Generate point cloud (3D data)
+        points = pc.calculate(depth_frame)
+        verts = np.asanyarray(points.get_vertices()).view(np.float32).reshape(-1, 3)
+        
+        # E. GrabCut Segmentation (Your existing code)
+            # Normalize depth image to 8-bit for mask creation
+        depth_normalized = cv2.normalize(depth_image, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+
+        # Apply GaussianBlur to reduce noise in depth image
+        depth_blurred = cv2.GaussianBlur(depth_normalized, (5, 5), 0)
+
+        # Create near and far masks
+        near_mask = cv2.inRange(depth_blurred, 120, 200)  # Items on the bed
+        far_mask = cv2.inRange(depth_blurred, 0, 119)     # Background
+
+        # Combine masks to create GrabCut initialization mask
+        mask = np.full_like(near_mask, cv2.GC_BGD, dtype=np.uint8)  # Default to background
+        mask[far_mask == 255] = cv2.GC_PR_BGD  # Probably background
+        mask[near_mask == 255] = cv2.GC_FGD    # Foreground (items on the bed)
+
+        # Morphological operations to refine masks
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+        near_mask = cv2.morphologyEx(near_mask, cv2.MORPH_CLOSE, kernel, iterations=2)
+
+        # Apply GrabCut
+        bg_model = np.zeros((1, 65), np.float64)
+        fg_model = np.zeros((1, 65), np.float64)
+        cv2.grabCut(color_image, mask, None, bg_model, fg_model, 5, cv2.GC_INIT_WITH_MASK)
+
+        # Extract the segmented foreground
+        segmented = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype('uint8')
+        foreground = cv2.bitwise_and(color_image, color_image, mask=segmented)
+        
+        # F. Extract valid 3D points (Only from segmented area)
+        valid_verts = verts[segmented.flatten() == 255]  # Using GrabCut mask
+        
+        # G. Filter points (Z > 0 and within 0.5m)
+        valid_verts = valid_verts[(valid_verts[:,2] > 0) & (valid_verts[:,2] < 0.5)]
+        
+        # H. Transform to robot coordinates
+        robot_points = [camera_to_robot(v, current_robot_pose) for v in valid_verts]
+        
+        # I. Path Planning (Simplified A*)
+        if len(robot_points) > 0:
+            # Create 2D grid (assuming flat powder bed)
+            grid, min_coords, grid_size = create_voxel_grid(np.array(robot_points))
+            
+            # Define start/goal (example: left to right)
+            start = (0, int(grid.shape[1]/2))
+            goal = (grid.shape[0]-1, int(grid.shape[1]/2))
+            
+            # Generate path
+            path = a_star_path(grid, start, goal)
+            
+            # Convert path points back to 3D coordinates
+            path_3d = [(min_coords[0] + x*grid_size, 
+                       min_coords[1] + y*grid_size, 
+                       0.01) for (x,y) in path]  # Z=1cm above surface
+
+        # J. Visualization
+        cv2.imshow('Segmentation', foreground)
+        
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+finally:
+    pipeline.stop()
+    cv2.destroyAllWindows()

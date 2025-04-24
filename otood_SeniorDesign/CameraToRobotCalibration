@@ -1,0 +1,37 @@
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+
+# Example calibration values (you'll need to measure these)
+# Camera position relative to UR5e end effector (in meters)
+cam_to_ee_translation = [0.05, 0, 0.1]  # x, y, z offset
+cam_to_ee_rotation = R.from_euler('xyz', [0, 0, 0]).as_matrix()  # Rotation matrix
+
+def transform_to_robot_base(point_3d, robot_pose):
+    """
+    Transform a 3D point from camera coordinates to robot base coordinates.
+    
+    Args:
+        point_3d (np.array): [x, y, z] in camera frame
+        robot_pose (list): Current UR5e end effector pose [x, y, z, rx, ry, rz]
+    
+    Returns:
+        np.array: Transformed point in robot base coordinates
+    """
+    # Convert robot pose to transformation matrix
+    ee_pos = np.array(robot_pose[:3])
+    ee_rot = R.from_rotvec(robot_pose[3:]).as_matrix()
+    
+    # Camera-to-end-effector transformation
+    cam_to_ee = np.eye(4)
+    cam_to_ee[:3, :3] = cam_to_ee_rotation
+    cam_to_ee[:3, 3] = cam_to_ee_translation
+    
+    # End-effector-to-base transformation
+    ee_to_base = np.eye(4)
+    ee_to_base[:3, :3] = ee_rot
+    ee_to_base[:3, 3] = ee_pos
+    
+    # Full transformation
+    point_hom = np.append(point_3d, 1)
+    base_point = ee_to_base @ cam_to_ee @ point_hom
+    return base_point[:3]
